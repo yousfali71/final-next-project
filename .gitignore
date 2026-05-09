@@ -47,3 +47,8 @@ yarn-error.log*
 
 # OS
 Thumbs.db
+
+# Archive folder (old Express backend)
+archive/
+server-old-backup/
+*-backup*/
