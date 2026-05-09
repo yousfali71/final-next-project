@@ -163,11 +163,13 @@ export default function CheckoutPage() {
     setCouponCode("");
     toast.success("Coupon removed");
   };
-discount = appliedCoupon ? parseFloat(appliedCoupon.discountAmount) : 0;
-  const subtotalAfterDiscount = subtotal - discount;
-  const shippingFee = subtotalAfterDiscount >= 100 ? 0 : 10;
-  const tax = (subtotalAfterDiscount * 0.1).toFixed(2);
-  const total = (subtotalAfterDiscount
+
+  const handlePlaceOrder = async () => {
+    if (!validateShipping()) {
+      return;
+    }
+
+    setLoading(true);
 
     try {
       const orderData = {
